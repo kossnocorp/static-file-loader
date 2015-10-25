@@ -1,0 +1,33 @@
+{
+  "name": "public-loader",
+  "version": "0.1.0",
+  "description": "TODO",
+  "main": "index.js",
+  "scripts": {
+    "test": "env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kossnocorp/public-loader.git"
+  },
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kossnocorp/public-loader/issues"
+  },
+  "homepage": "https://github.com/kossnocorp/public-loader",
+  "peerDependencies": {
+    "file-loader": "^0.8.4"
+  },
+  "devDependencies": {
+    "espower-loader": "^1.0.0",
+    "file-loader": "^0.8.4",
+    "mocha": "kossnocorp/mocha#c62939",
+    "power-assert": "^1.1.0",
+    "rewire": "^2.3.4",
+    "rewire-test-helpers": "^0.2.0",
+    "rimraf": "^2.4.3",
+    "sinon": "^1.17.2",
+    "webpack": "^1.12.2"
+  }
+}
