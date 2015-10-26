@@ -77,7 +77,7 @@ var assetsPath = path.join(process.cwd(), 'assets')
 webpack(webpackConfig).run(function(err, stats) {
   var publicMap = stats.compilation[publicMapKey]
   var html = template({
-    assetPath: (pth) {
+    assetPath: function(pth) {
       var exportedPath = assetsMap[path.join(assetsPath, pth)]
       return '/assets/' + exportedPath
     }
