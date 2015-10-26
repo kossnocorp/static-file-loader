@@ -23,4 +23,6 @@ module.exports = function(content) {
   return result
 }
 
+module.exports.raw = true
+
 module.exports.key = MAP_KEY

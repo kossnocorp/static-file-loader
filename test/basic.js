@@ -70,4 +70,8 @@ describe('basic tests', function() {
       assert(result === 'asd')
     })
   })
+
+  it('sets raw = true to the export', function() {
+    assert(publicLoader.raw)
+  })
 })
