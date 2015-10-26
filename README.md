@@ -79,7 +79,7 @@ webpack(webpackConfig).run(function(err, stats) {
   var html = template({
     assetPath: function(pth) {
       var exportedPath = assetsMap[path.join(assetsPath, pth)]
-      return '/assets/' + exportedPath
+      return stats.compilation.options.output.publicPath + exportedPath
     }
   })
 
