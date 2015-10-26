@@ -1,4 +1,5 @@
 # public-loader
+[![Build Status](https://travis-ci.org/kossnocorp/public-loader.svg?branch=master)](https://travis-ci.org/kossnocorp/public-loader)
 
 Drop-in replacement for [file-loader](https://github.com/webpack/file-loader)
 with the only difference: public-loader stores a map of original file names to
