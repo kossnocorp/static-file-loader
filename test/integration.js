@@ -26,7 +26,7 @@ describe('integration tests', function() {
     })
     compiler.run(function(err, stats) {
       var map = stats.compilation[publicLoaderKey]
-      assert.deepEqual(Object.keys(map), [
+      assert.deepEqual(Object.keys(map).sort(), [
         path.join(__dirname, 'fixtures', 'public', 'a.gif'),
         path.join(__dirname, 'fixtures', 'public', 'b.gif'),
         path.join(__dirname, 'fixtures', 'public', 'c.gif')
