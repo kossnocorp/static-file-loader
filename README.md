@@ -7,9 +7,9 @@ file names with hashes in the compilation stats:
 
 ``` json
 {
-  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/a.gif": "980d0a50ac153b475e9fb1b8ffe22619.gif",
-  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/b.gif": "980d0a50ac153b475e9fb1b8ffe22619.gif",
-  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/c.gif": "980d0a50ac153b475e9fb1b8ffe22619.gif"
+  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/a.gif": "/980d0a50ac153b475e9fb1b8ffe22619.gif",
+  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/b.gif": "/980d0a50ac153b475e9fb1b8ffe22619.gif",
+  "/Users/koss/src/kossnocorp/public-loader/test/fixtures/public/c.gif": "/980d0a50ac153b475e9fb1b8ffe22619.gif"
 }
 ```
 

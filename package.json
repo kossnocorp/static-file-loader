@@ -1,6 +1,6 @@
 {
   "name": "public-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "file-loader that stores a map of original file names to file names with hashes in the compilation stats",
   "main": "index.js",
   "scripts": {
