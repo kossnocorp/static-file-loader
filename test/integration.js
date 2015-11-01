@@ -15,24 +15,56 @@ describe('integration tests', function() {
     rmrf(path.join(__dirname, 'dist'), done)
   })
 
-  it('stores files map in the compilation stats', function(done) {
-    var compiler = webpack({
-      context: __dirname,
-      entry: './fixtures/index.js',
-      output: {
-      path: __dirname + "/dist",
-        filename: "bundle.js"
-      }
+  context('when publicPath is specified', () => {
+    it('stores files map in the compilation stats', function(done) {
+      var compiler = webpack({
+        context: __dirname,
+        entry: './fixtures/index.js',
+        output: {
+          path: path.join(__dirname, '/dist'),
+          filename: 'bundle.js',
+          publicPath: '/bundles'
+        }
+      })
+      compiler.run(function(err, stats) {
+        var publicFiles = stats.compilation[publicLoaderKey]
+        var fileNames = Object.keys(publicFiles)
+        assert.deepEqual(fileNames.sort(), [
+          path.join(__dirname, 'fixtures', 'public', 'a.gif'),
+          path.join(__dirname, 'fixtures', 'public', 'b.gif'),
+          path.join(__dirname, 'fixtures', 'public', 'c.gif')
+        ])
+        fileNames.forEach((fileName) => {
+          assert(publicFiles[fileName].match(/\/bundles\/\w+.gif$/))
+        })
+        done()
+      })
     })
-    compiler.run(function(err, stats) {
-      var map = stats.compilation[publicLoaderKey]
-      assert.deepEqual(Object.keys(map).sort(), [
-        path.join(__dirname, 'fixtures', 'public', 'a.gif'),
-        path.join(__dirname, 'fixtures', 'public', 'b.gif'),
-        path.join(__dirname, 'fixtures', 'public', 'c.gif')
-      ])
-      assert(map[path.join(__dirname, 'fixtures', 'public', 'a.gif')].match(/\w+.gif/))
-      done()
+  })
+
+  context('when publicPath is not specified', () => {
+    it('stores files map in the compilation stats', function(done) {
+      var compiler = webpack({
+        context: __dirname,
+        entry: './fixtures/index.js',
+        output: {
+          path: path.join(__dirname, '/dist'),
+          filename: 'bundle.js'
+        }
+      })
+      compiler.run(function(err, stats) {
+        var publicFiles = stats.compilation[publicLoaderKey]
+        var fileNames = Object.keys(publicFiles)
+        assert.deepEqual(fileNames.sort(), [
+          path.join(__dirname, 'fixtures', 'public', 'a.gif'),
+          path.join(__dirname, 'fixtures', 'public', 'b.gif'),
+          path.join(__dirname, 'fixtures', 'public', 'c.gif')
+        ])
+        fileNames.forEach((fileName) => {
+          assert(publicFiles[fileName].match(/\/\w+.gif$/))
+        })
+        done()
+      })
     })
   })
 })

@@ -17,7 +17,12 @@ describe('basic tests', function() {
     return {
       emitFile: function() {},
       resource: '/a/b/c.png',
-      _compilation: compilation
+      _compilation: compilation,
+      options: {
+        output: {
+          publicPath: '/bundles'
+        }
+      }
     }
   }
 
@@ -52,7 +57,7 @@ describe('basic tests', function() {
     var map = {}
     var context = getContext({map: map})
     publicLoader.call(context)
-    assert(map['/a/b/c.png'] === 'abc.png')
+    assert(map['/a/b/c.png'] === '/bundles/abc.png')
   })
 
 
