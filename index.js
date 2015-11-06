@@ -1,7 +1,7 @@
 var fileLoader = require('file-loader')
 var path = require('path')
 
-var MAP_KEY = '__public_loader_map__'
+var MAP_KEY = '__static_loader_map__'
 
 module.exports = function (content) {
   var originEmitFile = this.emitFile
