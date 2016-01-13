@@ -15,7 +15,7 @@ describe('integration tests', function() {
     rmrf(path.join(__dirname, 'dist'), done)
   })
 
-  context('when publicPath is specified', () => {
+  context('when publicPath is specified', function() {
     it('stores files map in the compilation stats', function(done) {
       var compiler = webpack({
         context: __dirname,
@@ -34,7 +34,7 @@ describe('integration tests', function() {
           path.join(__dirname, 'fixtures', 'public', 'b.gif'),
           path.join(__dirname, 'fixtures', 'public', 'c.gif')
         ])
-        fileNames.forEach((fileName) => {
+        fileNames.forEach(function(fileName) {
           assert(publicFiles[fileName].match(/\/bundles\/\w+.gif$/))
         })
         done()
@@ -42,7 +42,7 @@ describe('integration tests', function() {
     })
   })
 
-  context('when publicPath is not specified', () => {
+  context('when publicPath is not specified', function() {
     it('stores files map in the compilation stats', function(done) {
       var compiler = webpack({
         context: __dirname,
@@ -60,7 +60,7 @@ describe('integration tests', function() {
           path.join(__dirname, 'fixtures', 'public', 'b.gif'),
           path.join(__dirname, 'fixtures', 'public', 'c.gif')
         ])
-        fileNames.forEach((fileName) => {
+        fileNames.forEach(function(fileName) {
           assert(publicFiles[fileName].match(/\/\w+.gif$/))
         })
         done()
