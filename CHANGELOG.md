@@ -1,3 +1,8 @@
+## v0.4.0 (13 Jan 2016)
+
+* Improvements:
+  - Node.js v0.12 compatibility
+
 ## v0.3.0 (6 Nov 2015)
 
 * Improvements:

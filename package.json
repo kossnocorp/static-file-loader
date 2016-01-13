@@ -1,6 +1,6 @@
 {
   "name": "static-file-loader",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "file-loader that stores a map of original file names to file names with hashes in the compilation stats",
   "main": "index.js",
   "scripts": {
