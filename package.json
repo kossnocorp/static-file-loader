@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/kossnocorp/static-file-loader",
   "peerDependencies": {
-    "file-loader": "^0.8.4"
+    "file-loader": "^0.11.2"
   },
   "devDependencies": {
     "espower-loader": "^1.0.0",
-    "file-loader": "^0.8.4",
+    "file-loader": "^0.11.2",
     "mocha": "kossnocorp/mocha#c62939",
     "power-assert": "^1.1.0",
     "rewire": "^2.3.4",
