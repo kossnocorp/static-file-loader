@@ -4,8 +4,10 @@
   "description": "file-loader that stores a map of original file names to file names with hashes in the compilation stats",
   "main": "index.js",
   "scripts": {
-    "test": "env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js --watch",
-    "test-ci": "env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js"
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "test": "npm run lint && env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js --watch",
+    "test-ci": "npm run lint && env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,12 @@
     "rewire-test-helpers": "^0.2.0",
     "rimraf": "^2.4.3",
     "sinon": "^1.17.2",
+    "standard": "^10.0.2",
     "webpack": "^1.12.2"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   }
 }

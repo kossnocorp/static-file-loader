@@ -5,8 +5,8 @@ var rewireHelpers = require('rewire-test-helpers')
 var staticFileLoader = rewire('../')
 var staticFileLoaderKey = staticFileLoader.key
 
-describe('basic tests', function() {
-  var getContext = function(overrides) {
+describe('basic tests', function () {
+  var getContext = function (overrides) {
     overrides = overrides || {}
     var compilation = {}
 
@@ -15,7 +15,7 @@ describe('basic tests', function() {
     }
 
     return {
-      emitFile: function() {},
+      emitFile: function () {},
       resource: '/a/b/c.png',
       _compilation: compilation,
       options: {
@@ -27,56 +27,55 @@ describe('basic tests', function() {
   }
 
   rewireHelpers.injectDependenciesFilter(staticFileLoader, {
-    fileLoader: function() {
+    fileLoader: function () {
       this.emitFile('abc.png', 'abc')
     }
   })
 
-  it('do not throw an error when the map is not exists in the context', function() {
-    assert.doesNotThrow(function() {
+  it('do not throw an error when the map is not exists in the context', function () {
+    assert.doesNotThrow(function () {
       staticFileLoader.call(getContext())
     })
   })
 
-  it('adds a file to the map when the map is exists in the context', function() {
+  it('adds a file to the map when the map is exists in the context', function () {
     var map = {a: 'a'}
     var context = getContext({map: map})
     staticFileLoader.call(context)
-    assert(Object.keys(map).length == 2)
+    assert(Object.keys(map).length === 2)
   })
 
-  it('calls file-loader with passed arguments', function() {
+  it('calls file-loader with passed arguments', function () {
     var fileLoader = sinon.spy()
-    rewireHelpers.rewired(staticFileLoader, {fileLoader: fileLoader}, function() {
+    rewireHelpers.rewired(staticFileLoader, {fileLoader: fileLoader}, function () {
       staticFileLoader.call(getContext(), 'qwe')
       assert(fileLoader.calledWith('qwe'))
     })
   })
 
-  it('calls file-loader with passed arguments and stores a file to the map', function() {
+  it('calls file-loader with passed arguments and stores a file to the map', function () {
     var map = {}
     var context = getContext({map: map})
     staticFileLoader.call(context)
     assert(map['/a/b/c.png'] === '/bundles/abc.png')
   })
 
-
-  it('restores the original emitFile function', function() {
+  it('restores the original emitFile function', function () {
     var context = getContext()
     var emitFile = context.emitFile
     staticFileLoader.call(context)
     assert(emitFile === context.emitFile)
   })
 
-  it('returns file-loader result', function() {
-    var fileLoader = function() { return 'asd' }
-    rewireHelpers.rewired(staticFileLoader, {fileLoader: fileLoader}, function() {
+  it('returns file-loader result', function () {
+    var fileLoader = function () { return 'asd' }
+    rewireHelpers.rewired(staticFileLoader, {fileLoader: fileLoader}, function () {
       var result = staticFileLoader.call(getContext())
       assert(result === 'asd')
     })
   })
 
-  it('sets raw = true to the export', function() {
+  it('sets raw = true to the export', function () {
     assert(staticFileLoader.raw)
   })
 })
