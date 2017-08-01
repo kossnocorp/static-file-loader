@@ -3,3 +3,4 @@ script: npm run test-ci
 node_js:
   - 4
   - 6
+  - 8
