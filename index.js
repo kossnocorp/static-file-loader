@@ -1,5 +1,6 @@
 var fileLoader = require('file-loader')
 var path = require('path')
+var urlJoin = require('url-join')
 
 var MAP_KEY = '__static_loader_map__'
 
@@ -9,7 +10,7 @@ module.exports = function (content) {
 
   // Override emitFile function to get an url from file-loader
   this.emitFile = function(url, fileContent) {
-    map[this.resource] = path.join(this.options.output.publicPath || '/', url)
+    map[this.resource] = urlJoin(this.options.output.publicPath || '/', url)
     originEmitFile.call(this, url, fileContent)
   }.bind(this)
 
