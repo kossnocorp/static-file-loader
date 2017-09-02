@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "npm run lint && env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js --watch",
+    "lint-watch": "chokidar -c 'npm run lint-fix' index.js",
+    "test": "npm run lint && env NODE_ENV=test mocha --require ./test/power_ass    ert_loader.js test/basic.js test/integration.js",
+    "test-watch": "npm run lint && env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js --watch",
     "test-ci": "npm run lint && env NODE_ENV=test mocha --require ./test/power_assert_loader.js test/basic.js test/integration.js"
   },
   "repository": {
