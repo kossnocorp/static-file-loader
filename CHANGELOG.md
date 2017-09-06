@@ -1,4 +1,4 @@
-## Unreleased
+## v0.5.0 (6 Sep 2017)
 
 * Improvements:
   - Updated file-loader to 0.11.2
