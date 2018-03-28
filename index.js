@@ -9,7 +9,7 @@ module.exports = function (content) {
 
   // Override emitFile function to get an url from file-loader
   this.emitFile = function (url, fileContent) {
-    map[this.resource] = path.join(this.options.output.publicPath || '/', url)
+    map[this.resource] = path.join(this._compiler.options.output.publicPath || '/', url)
     originEmitFile.call(this, url, fileContent)
   }.bind(this)
 
