@@ -22,11 +22,11 @@
   },
   "homepage": "https://github.com/kossnocorp/static-file-loader",
   "peerDependencies": {
-    "file-loader": "^0.11.2"
+    "file-loader": "^1.1.11"
   },
   "devDependencies": {
     "espower-loader": "^1.0.0",
-    "file-loader": "^0.11.2",
+    "file-loader": "^1.1.11",
     "mocha": "kossnocorp/mocha#c62939",
     "power-assert": "^1.1.0",
     "rewire": "^2.3.4",
@@ -34,7 +34,7 @@
     "rimraf": "^2.4.3",
     "sinon": "^1.17.2",
     "standard": "^10.0.2",
-    "webpack": "^1.12.2"
+    "webpack": "^4.5.0"
   },
   "standard": {
     "env": [
