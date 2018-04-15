@@ -9,7 +9,6 @@ const handleError = (err, stats) => {
     throw err
   }
   const info = stats.toJson()
-  // console.log(util.inspect(info))
   if (stats.hasErrors()) {
     for (const error of info.errors) {
       console.error(error)
@@ -37,6 +36,7 @@ describe('integration tests', function () {
   context('when publicPath is specified', function () {
     it('stores files map in the compilation stats', function (done) {
       var compiler = webpack({
+        mode: 'production',
         context: __dirname,
         entry: './fixtures/index.js',
         output: {
@@ -47,8 +47,7 @@ describe('integration tests', function () {
       })
       compiler.run(function (err, stats) {
         handleError(err, stats)
-        var info = stats.toJson()
-        var staticFiles = info.compilation[staticFileLoaderKey]
+        var staticFiles = stats.compilation[staticFileLoaderKey]
         var fileNames = Object.keys(staticFiles)
         assert.deepEqual(fileNames.sort(), [
           path.join(__dirname, 'fixtures', 'static', 'a.gif'),
@@ -66,6 +65,7 @@ describe('integration tests', function () {
   context('when publicPath is not specified', function () {
     it('stores files map in the compilation stats', function (done) {
       var compiler = webpack({
+        mode: 'production',
         context: __dirname,
         entry: './fixtures/index.js',
         output: {
@@ -75,8 +75,7 @@ describe('integration tests', function () {
       })
       compiler.run(function (err, stats) {
         handleError(err, stats)
-        var info = stats.toJson()
-        var staticFiles = info.compilation[staticFileLoaderKey]
+        var staticFiles = stats.compilation[staticFileLoaderKey]
         var fileNames = Object.keys(staticFiles)
         assert.deepEqual(fileNames.sort(), [
           path.join(__dirname, 'fixtures', 'static', 'a.gif'),
