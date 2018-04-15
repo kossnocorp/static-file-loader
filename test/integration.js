@@ -4,6 +4,25 @@ var path = require('path')
 var staticFileLoaderKey = require('../').key
 var webpack = require('webpack')
 var rmrf = require('rimraf')
+const handleError = (err, stats) => {
+  if (err) {
+    throw err
+  }
+  const info = stats.toJson()
+  // console.log(util.inspect(info))
+  if (stats.hasErrors()) {
+    for (const error of info.errors) {
+      console.error(error)
+    }
+    const error = { msg: 'error during webpack build' }
+    throw error
+  }
+  if (stats.hasWarnings()) {
+    for (const warning of info.warnings) {
+      console.warn(warning)
+    }
+  }
+}
 
 describe('integration tests', function () {
   beforeEach(function () {
@@ -27,10 +46,9 @@ describe('integration tests', function () {
         }
       })
       compiler.run(function (err, stats) {
-        if (err) {
-          throw err
-        }
-        var staticFiles = stats.compilation[staticFileLoaderKey]
+        handleError(err, stats)
+        var info = stats.toJson()
+        var staticFiles = info.compilation[staticFileLoaderKey]
         var fileNames = Object.keys(staticFiles)
         assert.deepEqual(fileNames.sort(), [
           path.join(__dirname, 'fixtures', 'static', 'a.gif'),
@@ -56,10 +74,9 @@ describe('integration tests', function () {
         }
       })
       compiler.run(function (err, stats) {
-        if (err) {
-          throw err
-        }
-        var staticFiles = stats.compilation[staticFileLoaderKey]
+        handleError(err, stats)
+        var info = stats.toJson()
+        var staticFiles = info.compilation[staticFileLoaderKey]
         var fileNames = Object.keys(staticFiles)
         assert.deepEqual(fileNames.sort(), [
           path.join(__dirname, 'fixtures', 'static', 'a.gif'),
