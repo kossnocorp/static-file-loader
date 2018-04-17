@@ -13,8 +13,7 @@ const handleError = (err, stats) => {
     for (const error of info.errors) {
       console.error(error)
     }
-    const error = { msg: 'error during webpack build' }
-    throw error
+    throw new Error('error during webpack build')
   }
   if (stats.hasWarnings()) {
     for (const warning of info.warnings) {

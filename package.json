@@ -23,7 +23,7 @@
   "homepage": "https://github.com/kossnocorp/static-file-loader",
   "peerDependencies": {
     "file-loader": "^1.1.11",
-    "webpack": ">= 4.0.0"
+    "webpack": ">=4.0.0"
   },
   "devDependencies": {
     "espower-loader": "^1.0.0",
