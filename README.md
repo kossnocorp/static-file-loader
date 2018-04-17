@@ -27,7 +27,7 @@ npm install static-file-loader file-loader --save-dev
 In an entry:
 
 ``` js
-require.context('!!static-file!./static', true, /.+/)
+require.context('!!static-file-loader!./static', true, /.+/)
 
 // ...
 ```
